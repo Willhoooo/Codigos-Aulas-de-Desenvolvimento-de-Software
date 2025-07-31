@@ -1,20 +1,47 @@
 # Início do programa de caixa eletrônico
 
-def caixa_eletronico(saldo = 5000):
+def caixa_eletronico():
 
-    print('Caixa Eletrônico da Maze Bank')
+    saldo = 5000
 
-    saque = float(input('\nDigite o valor de saque: R$')) # Inserir valor de saque
+    while True:
+        print('===== CAIXA ELETRÔNICO - MAZE BANK =====')
+        print('SEJA BEM-VINDO(A) O QUE VOCÊ QUER FAZER?')
+        print('[1] - SAQUE')
+        print('[2] - DEPÓSITO')
+        print('[3] - CONSULTAR SALDO')
+        print('[4] - SAIR')
 
-    # Condições
-    if saque <= saldo: # Se o valor de saque for menor ou igual à 5000, o saque é realizado
-        total = saldo - saque
+        opcao = int(input('\nESCOLHA UMA OPÇÃO: '))
 
-        print(f"\nSaque de R${saque} efetuado com sucesso!")
-        print(f'Seu saldo restante é de: R${total}')
+        match opcao:
 
-    else: # Se o valor de saque for maior que 5000, ele não realiza o saque
-        print('Saldo insuficiente!')
+            case 1:
+                saque = float(input('\nDIGITE O VALOR QUE DESEJA SACAR: R$'))
+
+                if saque <= 5000:
+                    saldo -= saque
+                    print(f'SAQUE DE R${saque} FEITO COM SUCESSO!')
+                    print(f'SALDO RESTANTE: R${saldo}')
+
+                else:
+                    print('SALDO INSUFICIENTE PARA SAQUE!')
+
+            case 2:
+                deposito = float(input('\nDIGITE O VALOR QUE DESEJA DEPOSITAR: R$'))
+                saldo += deposito
+                print(f'DEPÓSITO DE R${deposito} FEITO COM SUCESSO!')
+                print(f'SALDO RESTANTE: R${saldo}')
+
+            case 3:
+                print(f'SEU SALDO ATUAL É DE R${saldo}')
+
+            case 4:
+                print(f'\nFINALIZANDO...')
+                break
+
+            case _:
+                print('OPÇÃO INVÁLIDA! TENTE NOVAMENTE!\n')
 
 # Chama a função
 caixa_eletronico()
